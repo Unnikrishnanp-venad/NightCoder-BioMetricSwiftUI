@@ -20,8 +20,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4519E08F2DBB687700DCF912 /* MyFirstSwiftUI App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = "MyFirstSwiftUI App";
 			sourceTree = "<group>";
 		};
@@ -71,7 +69,6 @@
 				12C0156A2B6AFE70BFEB693E /* Pods-MyFirstSwiftUI App.debug.xcconfig */,
 				531E26767633695FC5B96117 /* Pods-MyFirstSwiftUI App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -311,7 +308,9 @@
 				DEVELOPMENT_TEAM = H3KM9BC4W5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "This app needs access to your contacts.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID to authenticate and keep your data secure.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to show your photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,7 +343,9 @@
 				DEVELOPMENT_TEAM = H3KM9BC4W5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "This app needs access to your contacts.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID to authenticate and keep your data secure.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to show your photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

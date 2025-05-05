@@ -20,9 +20,9 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            SettingsView()
+            GalleryGridView()
                 .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle")
+                    Label("Gallery", systemImage: "photo")
                 }
             LandingView()
                 .tabItem {
