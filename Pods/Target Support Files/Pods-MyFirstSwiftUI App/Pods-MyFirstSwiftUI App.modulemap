@@ -1,0 +1,6 @@
+framework module Pods_MyFirstSwiftUI_App {
+  umbrella header "Pods-MyFirstSwiftUI App-umbrella.h"
+
+  export *
+  module * { export * }
+}

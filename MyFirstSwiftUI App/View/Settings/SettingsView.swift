@@ -8,7 +8,8 @@
 import SwiftUI
 struct SettingsView: View {
     var body: some View {
-        WebView(url: URL(string: "https://www.apple.com/in/")!)
-                  .edgesIgnoringSafeArea(.all) // Fullsc
+        VStack {
+                   Text("My Profile").font(.largeTitle)
+               }
     }
 }
