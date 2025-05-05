@@ -1,3 +1,5 @@
+
+https://github.com/user-attachments/assets/94f6a32d-dddc-4bed-87a2-d3ad603cb105
 # SwiftUI Multi-Feature iOS App
 
 A SwiftUI-based iOS application showcasing modern iOS development techniques including **Biometric Authentication**, **Contact Picker**, **Gallery Image Picker with Persistent Storage**, **Side Menu**, and **Tab-based Navigation**.
@@ -74,3 +76,10 @@ Ensure you update the following `Info.plist` keys:
 <string>This app accesses your contacts</string>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>This app needs access to your photo library</string>
+
+
+
+https://github.com/user-attachments/assets/b6b4186f-bae3-4020-8170-2c11a79ae00b
+
+
+
