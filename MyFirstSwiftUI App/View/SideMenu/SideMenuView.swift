@@ -1,7 +1,9 @@
 import SwiftUI
-
+import PhotosUI
 struct SideMenu: View {
     @Binding var isShowing: Bool
+    
+    
     var content: AnyView
     var edgeTransition: AnyTransition = .move(edge: .leading)
     var body: some View {
@@ -63,6 +65,9 @@ struct SideMenuView: View {
     @Binding var selectedSideMenuTab: Int
     @Binding var presentSideMenu: Bool
     
+    @State private var selectedImage: UIImage? = ImageStorageManager.loadImage()
+    @State private var isShowingPhotoPicker = false
+    
     var body: some View {
         HStack {
             
@@ -88,9 +93,7 @@ struct SideMenuView: View {
                 }
                 .padding(.top, 100)
                 .frame(width: 270)
-                .background(
-                    Color.white
-                )
+                .background(Color(UIColor.white))
             }
             
             
@@ -100,22 +103,41 @@ struct SideMenuView: View {
     }
     
     func ProfileImageView() -> some View{
-        VStack(alignment: .center){
-            HStack{
+        VStack(alignment: .center) {
+            HStack {
                 Spacer()
-                Image("profile-image")
-                    .resizable()
+                Button(action: {
+                    isShowingPhotoPicker = true
+                }) {
+                    Group {
+                        if let selectedImage = selectedImage {
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                        } else {
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                        }
+                    }
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
                     .overlay(
                         RoundedRectangle(cornerRadius: 50)
-                            .stroke(.purple.opacity(0.5), lineWidth: 10)
+                            .stroke(.gray.opacity(0.5), lineWidth: 10)
                     )
                     .cornerRadius(50)
+                }
+                .sheet(isPresented: $isShowingPhotoPicker) {
+                    PhotoPicker { image in
+                        if let image = image {
+                            self.selectedImage = image
+                            ImageStorageManager.saveImage(image)
+                        }
+                    }
+                }
                 Spacer()
             }
             
-            Text("Muhammad Abbas")
+            Text("Unni")
                 .font(.system(size: 18, weight: .bold))
                 .foregroundColor(.black)
             
@@ -124,7 +146,7 @@ struct SideMenuView: View {
                 .foregroundColor(.black.opacity(0.5))
         }
     }
-    
+ 
     func RowView(isSelected: Bool, imageName: String, title: String, hideDivider: Bool = false, action: @escaping (()->())) -> some View{
         Button{
             action()
@@ -132,7 +154,7 @@ struct SideMenuView: View {
             VStack(alignment: .leading){
                 HStack(spacing: 20){
                     Rectangle()
-                        .fill(isSelected ? .purple : .white)
+                        .fill(isSelected ? .gray : .white)
                         .frame(width: 5)
                     
                     ZStack{
@@ -152,8 +174,87 @@ struct SideMenuView: View {
         }
         .frame(height: 50)
         .background(
-            LinearGradient(colors: [isSelected ? .purple.opacity(0.5) : .white, .white], startPoint: .leading, endPoint: .trailing)
+            LinearGradient(colors: [isSelected ? .gray.opacity(0.5) : .white, .white], startPoint: .leading, endPoint: .trailing)
         )
     }
 }
 
+struct PhotoPicker: UIViewControllerRepresentable {
+    var onImagePicked: (UIImage?) -> Void
+    
+    func makeUIViewController(context: Context) -> PHPickerViewController {
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        config.selectionLimit = 1
+        
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(onImagePicked: onImagePicked)
+    }
+    
+    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+        var onImagePicked: (UIImage?) -> Void
+        
+        init(onImagePicked: @escaping (UIImage?) -> Void) {
+            self.onImagePicked = onImagePicked
+        }
+        
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            picker.dismiss(animated: true)
+            
+            guard let provider = results.first?.itemProvider,
+                  provider.canLoadObject(ofClass: UIImage.self) else {
+                onImagePicked(nil)
+                return
+            }
+            
+            provider.loadObject(ofClass: UIImage.self) { image, _ in
+                DispatchQueue.main.async {
+                    self.onImagePicked(image as? UIImage)
+                }
+            }
+        }
+    }
+}
+
+
+struct ImageStorageManager {
+    static let fileName = "profile_image.png"
+
+    // Get documents directory URL
+    static private func getDocumentsDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+
+    // Get full file URL for the image
+    static private func fileURL() -> URL {
+        getDocumentsDirectory().appendingPathComponent(fileName)
+    }
+
+    // Save UIImage as PNG
+    static func saveImage(_ image: UIImage) {
+        if let data = image.pngData() {
+            try? data.write(to: fileURL())
+        }
+    }
+
+    // Load saved UIImage
+    static func loadImage() -> UIImage? {
+        let url = fileURL()
+        if let data = try? Data(contentsOf: url) {
+            return UIImage(data: data)
+        }
+        return nil
+    }
+
+    // Remove saved image if needed
+    static func deleteImage() {
+        try? FileManager.default.removeItem(at: fileURL())
+    }
+}
