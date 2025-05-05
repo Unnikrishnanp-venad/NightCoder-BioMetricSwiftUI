@@ -1,0 +1,20 @@
+# Xcode
+DerivedData/
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/
+*.xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+
+# User settings
+*.xcuserstate
+*.swp
+*.swo
+
+# macOS system files
+.DS_Store
+
+# Git
+*.orig
