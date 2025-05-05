@@ -10,7 +10,7 @@ import Contacts
 struct ContactsView: View {
     var body: some View {
         VStack {
-                   TableView()
-               }
+            TableView()
+        }
     }
 }
