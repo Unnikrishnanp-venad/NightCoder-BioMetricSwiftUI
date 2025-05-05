@@ -10,7 +10,9 @@ import SwiftUI
 
 struct RegistrationView: View {
     var body: some View {
-        WebView(url: URL(string: "https://www.apple.com/in/")!)
-                  .edgesIgnoringSafeArea(.all) // Fullsc
+        VStack {
+            WebView(url: URL(string: "https://www.apple.com/in/")!)
+                .edgesIgnoringSafeArea(.bottom) // This makes sure the WebView fills the screen but respects the safe area top and sides
+        }
     }
 }
