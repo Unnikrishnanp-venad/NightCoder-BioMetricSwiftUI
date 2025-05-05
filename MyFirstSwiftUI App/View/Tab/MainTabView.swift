@@ -41,6 +41,7 @@ struct MainTabView: View {
                         Image(systemName: "line.horizontal.3")
                             .imageScale(.large)
                     }))
+                .navigationBarBackButtonHidden(true) 
                 SideMenu(isShowing: $presentSideMenu, content: AnyView(SideMenuView(selectedSideMenuTab: $selectedSideMenuTab, presentSideMenu: $presentSideMenu)))
             }
         }
