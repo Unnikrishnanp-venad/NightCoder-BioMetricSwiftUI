@@ -16,7 +16,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            SearchView()
+            ContactsView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
