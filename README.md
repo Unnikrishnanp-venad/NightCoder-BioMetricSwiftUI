@@ -1,6 +1,3 @@
-
-https://github.com/user-attachments/assets/74ab20f8-2f8a-402c-924f-c8504fcfde3d
-
 https://github.com/user-attachments/assets/94f6a32d-dddc-4bed-87a2-d3ad603cb105
 # SwiftUI Multi-Feature iOS App
 
