@@ -1,4 +1,6 @@
 
+https://github.com/user-attachments/assets/74ab20f8-2f8a-402c-924f-c8504fcfde3d
+
 https://github.com/user-attachments/assets/94f6a32d-dddc-4bed-87a2-d3ad603cb105
 # SwiftUI Multi-Feature iOS App
 
@@ -79,7 +81,10 @@ Ensure you update the following `Info.plist` keys:
 
 
 
-https://github.com/user-attachments/assets/b6b4186f-bae3-4020-8170-2c11a79ae00b
+
+
+https://github.com/user-attachments/assets/db0e2d8a-f1fa-4937-8717-497e66e88961
+
 
 
 
