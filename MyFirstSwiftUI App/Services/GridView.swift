@@ -4,7 +4,7 @@ import Photos
 struct GridView: View {
     @State private var photoItems: [PhotoItem] = []
     
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    let columns = [GridItem(.flexible())]
 
     var body: some View {
         ScrollView {
@@ -12,8 +12,8 @@ struct GridView: View {
                 ForEach(photoItems) { item in
                     Image(uiImage: item.image)
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 110, height: 110)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:  UIScreen.main.bounds.width * 0.9, height:  UIScreen.main.bounds.height * 0.5)
                         .clipped()
                         .cornerRadius(8)
                 }
@@ -35,7 +35,7 @@ struct GridView: View {
 
             let assets = PHAsset.fetchAssets(with: .image, options: fetchOptions)
             let imageManager = PHCachingImageManager()
-            let targetSize = CGSize(width: 200, height: 200)
+            let targetSize = CGSize(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
 
             var loadedItems: [PhotoItem] = []
             let group = DispatchGroup()

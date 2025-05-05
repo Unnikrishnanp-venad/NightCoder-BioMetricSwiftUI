@@ -36,7 +36,7 @@ struct ContentView: View {
                 }
             }
         }.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.showSplash = false
             })
         }
