@@ -7,10 +7,10 @@ struct CorousalView: View {
     @State private var navigateToHome = false  // State for navigation
     
     let carouselItems: [CarouselItem] = [
-        CarouselItem(imageName: "app-intro-01", title: "Hoida vakuutus- ja korvausasiasi sujuvasti puhelimella missä ja milloin vain."),
-        CarouselItem(imageName: "app-intro-02", title: "Kun käytössäsi on hoitokuluja kattava vakuutus, kannattaa lääkärikäyntiä varten hakea etukäteen laskutuslupaa."),
-        CarouselItem(imageName: "app-intro-03", title: "E-laskulla saat vakuutuslaskut suoraan verkkopankkiisi, jossa ne myös säilyvät turvallisesti."),
-        CarouselItem(imageName: "app-intro-04", title: "Laskutuslupaa ei tarvitse käyttää vain vakuutuslaskutuspaikkaan, vaikka se on neuvottamaton muoto.")
+        CarouselItem(imageName: "app-intro-01", title: "Discover a smarter way to browse, order, and manage your school uniforms—all in one place.."),
+        CarouselItem(imageName: "app-intro-02", title: "Easily browse and order the right uniforms for your school with just a few taps."),
+        CarouselItem(imageName: "app-intro-03", title: "Get notified about delivery updates, new stock, and school-specific changes instantly."),
+        CarouselItem(imageName: "app-intro-04", title: "Organize your uniform purchases, check size guides, and set reminders for the next school year.")
     ]
     
     init() {
