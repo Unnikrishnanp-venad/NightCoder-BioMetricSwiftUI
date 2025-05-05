@@ -119,12 +119,12 @@ struct SideMenuView: View {
                         }
                     }
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
+                    .frame(width: UIScreen.main.bounds.width * 0.4, height:  UIScreen.main.bounds.width * 0.4)
                     .overlay(
                         RoundedRectangle(cornerRadius: 50)
                             .stroke(.gray.opacity(0.5), lineWidth: 10)
                     )
-                    .cornerRadius(50)
+                    .cornerRadius(( UIScreen.main.bounds.width * 0.4) / 2)
                 }
                 .sheet(isPresented: $isShowingPhotoPicker) {
                     PhotoPicker { image in
@@ -136,14 +136,6 @@ struct SideMenuView: View {
                 }
                 Spacer()
             }
-            
-            Text("Unni")
-                .font(.system(size: 18, weight: .bold))
-                .foregroundColor(.black)
-            
-            Text("IOS Developer")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.black.opacity(0.5))
         }
     }
  
